@@ -7,12 +7,19 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.CommandM.PP"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.CommandM.PP"
         },
-        "cordova-plugin-splashscreen": {
+        "phonegap-plugin-barcodescanner": {
             "PACKAGE_NAME": "com.CommandM.PP"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.CommandM.PP"
+        }
+    }
 }

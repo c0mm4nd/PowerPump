@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <meta http-equiv="Content-Security-Policy"
+         content="
+         style-src * ;
+         media-src * ;
+         img-src * ;
+         script-src * ;
+         font-src * ;
+         default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval';
+         ">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="css/index.css">
+
+
+        <link rel="stylesheet" href="css/sm.min.css">
+        <script type='text/javascript' src='js/zepto.min.js' charset='utf-8'></script>
+        <script type='text/javascript' src='js/sm.min.js' charset='utf-8'></script>
+        <link rel="stylesheet" href="css/sm-extend.min.css">
+        <script type='text/javascript' src='js/sm-extend.min.js' charset='utf-8'></script>
+        <script type="text/javascript" src="js/swiper.min.js"></script>
+        <script type="text/javascript" src="js/sm-city-picker.min.js" charset="utf-8"></script>
+
+        </script>
+        <title>Hello World</title>
+    </head>
+<body>
+    
+
+<div class="page">
+    <header class="bar bar-nav">
+      <a  class="icon icon-code pull-left " href="javascript:scanQR();"></a>
+      <a class="create-actions">
+        <h1 class="title"> 
+        上海
+        </h1>
+      </a>
+      <a  class="icon icon-menu pull-right open-panel"></a>
+
+    </header>
+    <nav class="bar bar-tab">
+        <a class="tab-item active" href="index.html">
+            <span class="icon icon-home"></span>
+            <span class="tab-label">Index</span>
+        </a>
+        <a class="tab-item" href="#">
+            <span class="icon icon-gift"></span>
+            <span class="tab-label">Order</span>
+        </a>
+        <a class="tab-item" href="#">
+            <span class="icon icon-message"></span>
+            <span class="tab-label">Message</span>
+        </a>
+        <a class="tab-item" href="me.html">
+            <span class="icon icon-me"></span>
+            <span class="tab-label">Me</span>
+        </a>
+    </nav>
+
+
+
+    <div class="content-padding">
+      <!-- Slider -->
+      <div class="content-block-title">社区精选</div>
+      <div class="card facebook-card">
+        <div class="card-header no-border">
+          <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
+          <div class="facebook-name">= =</div>
+          <div class="facebook-date">QAQ</div>
+        </div>
+     
+        <div class="card-footer no-border">
+          <div class="card-content">强势吐槽专用区欢迎各种吐槽哈哈哈</div>
+          <a href="#" class="link">赞</a>
+          <a href="#" class="link">评论</a>
+          <a href="#" class="link">分享</a>
+        </div>
+      </div>      
+
+     
+    </div>
+
+    <div class="panel-overlay"></div>
+    <!-- Left Panel with Reveal effect -->
+    <div class="panel panel-right panel-cover" id='panel-js-demo'>
+      <div class="content-block">
+        <p>我是从右边出现的</p>
+        <p>并且我是覆盖在页面上而不是推开页面</p>
+        <p></p>
+        <!-- Click on link with "close-panel" class will close panel -->
+        <p><a href="#" class="close-panel">关闭</a></p>
+      </div>
+    </div>
+    <div class="panel panel-right panel-reveal">
+      <div class="content-block">
+        <p>这是一个侧栏</p>
+        <!-- Click on link with "close-panel" class will close panel -->
+        <p><a href="#" class="close-panel">关闭</a></p>
+      </div>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+  app.initialize();
+  var mySwiper = new Swiper('.swiper-container', {
+     speed: 400,
+     spaceBetween: 100,
+     autoplay: 1000,
+     pagination : '.swiper-pagination'
+  });
+
+function scanQR(){
+
+    cordova.plugins.barcodeScanner.scan(
+      function (result) {
+          $.confirm("您选择的是XX充电站XX充电桩，充电费为X元/度");
+      }, 
+      function (error) {
+          $.confirm("Scanning failed: " + error);
+      },
+      {
+          "preferFrontCamera" : false, // iOS and Android
+          "showFlipCameraButton" : true, // iOS and Android
+          "prompt" : "Place a QR Code inside the scan area", // supported on Android only
+          "formats" : "QR_CODE", // default: all but PDF_417 and RSS_EXPANDED
+          "orientation" : "portrait" // Android only (portrait|landscape), default unset so it rotates with the device
+      }
+    );
+}
+</body>
+
+</html>
