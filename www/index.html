@@ -55,11 +55,17 @@
     <!-- Slider -->
     <div class="swiper-container" data-space-between='10'>
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="img/swiper_1.png" width="100%"  alt=""></div>
-        <div class="swiper-slide"><img src="img/swiper_2.png" width="100%"  alt=""></div>
-        <div class="swiper-slide"><img src="img/swiper_3.png" width="100%"  alt=""></div>
+        <div class="swiper-slide"><img src="img/index/swiper_1.png" width="100%"  alt=""></div>
+        <div class="swiper-slide"><img src="img/index/swiper_2.png" width="100%"  alt=""></div>
+        <div class="swiper-slide"><img src="img/index/swiper_3.png" width="100%"  alt=""></div>
       </div>
       <div class="swiper-pagination"></div>
+    </div>
+    <div class="row">
+      <div class="col-25" align="middle" ><a href="map.html"><img src="img/index/icon_1.png" width="100%" /><span>我要充电</span></a></div>
+      <div class="col-25" align="middle" ><a href="#"><img src="img/index/icon_2.png" width="100%" /><span>线路规划</span></a></div>
+      <div class="col-25" align="middle" ><a href="#"><img src="img/index/icon_3.png" width="100%" /><span>我要代充</span></a></div>
+      <div class="col-25" align="middle" ><a href="#"><img src="img/index/icon_4.png" width="100%" /><span>我要养车</span></a></div>
     </div>
     <div class="content-block-title">社区精选</div>
     <div class="card facebook-card">
@@ -122,34 +128,6 @@
 </div>
 </div>
 
-<div class="page" id="map">
-  <header class="bar bar-nav"
-    <a  class="icon icon-code pull-left " href="javascript:scanQR();"></a>
-    <h1 class="title">我的订单</h1>
-    <a  class="icon icon-menu pull-right open-panel"></a>
-  </header>
-  <nav class="bar bar-tab">
-      <a class="tab-item active" href="#index">
-          <span class="icon icon-home"></span>
-          <span class="tab-label">Index</span>
-      </a>
-      <a class="tab-item" href="#">
-          <span class="icon icon-gift"></span>
-          <span class="tab-label">Order</span>
-      </a>
-      <a class="tab-item" href="#">
-          <span class="icon icon-message"></span>
-          <span class="tab-label">Message</span>
-      </a>
-      <a class="tab-item" href="me.html">
-          <span class="icon icon-me"></span>
-          <span class="tab-label">Me</span>
-      </a>
-  </nav>
-  <div class="content">
-    <div id="allmap"></div>
-  </div>
-</div>
 
 <div class="page" id="POIdetail">
   <header class="bar bar-nav">
@@ -158,7 +136,7 @@
     <a  class="icon icon-menu pull-right open-panel"></a>
   </header>
   <nav class="bar bar-tab">
-      <a class="tab-item active" href="#index">
+      <a class="tab-item active" href="index.html#index">
           <span class="icon icon-home"></span>
           <span class="tab-label">Index</span>
       </a>
@@ -300,64 +278,6 @@ function city(){
   }
 </script>
 
-<script type="text/javascript">
-  // 百度地图API功能
-  var map = new BMap.Map("allmap");
-  var point = new BMap.Point(116.331398,39.897445);
-  map.centerAndZoom(point,16);
-  var myPosition;
-
-  /*初始化定位*/
-  var geolocation = new BMap.Geolocation();
-  geolocation.getCurrentPosition(function(r){
-    if(this.getStatus() == BMAP_STATUS_SUCCESS){
-      var mk = new BMap.Marker(r.point);
-      myPosition = r;
-      map.panTo(r.point);
-      map.addOverlay(mk);
-      mk.setAnimation( BMAP_ANIMATION_BOUNCE );
-      
-      
-      // alert('您的位置：'+r.point.lng+','+r.point.lat);
-    }
-    else {
-      alert('failed'+this.getStatus());
-    }        
-  },{enableHighAccuracy: true})
-
-
-  /*清理标注并重新初始化定位*/
-  function relocate(){
-    map.clearOverlays();
-    geolocation.getCurrentPosition(function(r){
-      if(this.getStatus() == BMAP_STATUS_SUCCESS){
-        var mk = new BMap.Marker(r.point);
-        map.panTo(r.point);
-        map.addOverlay(mk);
-        mk.setAnimation( BMAP_ANIMATION_BOUNCE ); 
-        myPosition = r;     
-        
-        // alert('您的位置：'+r.point.lng+','+r.point.lat);
-      }
-      else {
-        alert('failed'+this.getStatus());
-      }        
-    },{enableHighAccuracy: true})
-  }
-
-  function searchPower(){
-    
-    var local = new BMap.LocalSearch(map, {
-      renderOptions:{map: map}
-    });
-    var radius = 10000000;
-    var center = myPosition.point;
-
-    local.searchNearby("test", center, radius,{customData:{geotableId:140069}});
-
-
-  }
-</script>
 
 </body>
 
