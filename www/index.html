@@ -51,7 +51,8 @@
           <span class="tab-label">Me</span>
       </a>
   </nav>
-  <div class="content content-padding">
+  <div class="content ">
+  <div class="content-padded">
     <!-- Slider -->
     <div class="swiper-container" data-space-between='10'>
       <div class="swiper-wrapper">
@@ -62,7 +63,7 @@
       <div class="swiper-pagination"></div>
     </div>
     <div class="row">
-      <div class="col-25" align="middle" ><a href="map.html"><img src="img/index/icon_1.png" width="100%" /><span>我要充电</span></a></div>
+      <div class="col-25" align="middle" ><a href="#map"><img src="img/index/icon_1.png" width="100%" /><span>我要充电</span></a></div>
       <div class="col-25" align="middle" ><a href="#"><img src="img/index/icon_2.png" width="100%" /><span>线路规划</span></a></div>
       <div class="col-25" align="middle" ><a href="#"><img src="img/index/icon_3.png" width="100%" /><span>我要代充</span></a></div>
       <div class="col-25" align="middle" ><a href="#"><img src="img/index/icon_4.png" width="100%" /><span>我要养车</span></a></div>
@@ -123,11 +124,40 @@
         <a href="#" class="link">分享</a>
       </div>
      </div>  
-    
+  </div>  
   </div>
 </div>
 </div>
 
+
+<div class="page" id="map">
+  <header class="bar bar-nav">
+    <a  class="icon icon-left pull-left " href="javascript:$.router.back();"></a>
+    <h1 class="title">我的订单</h1>
+    <a  class="icon icon-menu pull-right open-panel"></a>
+  </header>
+  <nav class="bar bar-tab">
+      <a class="tab-item active" href="index.html#index">
+          <span class="icon icon-home"></span>
+          <span class="tab-label">Index</span>
+      </a>
+      <a class="tab-item" href="#">
+          <span class="icon icon-gift"></span>
+          <span class="tab-label">Order</span>
+      </a>
+      <a class="tab-item" href="#">
+          <span class="icon icon-message"></span>
+          <span class="tab-label">Message</span>
+      </a>
+      <a class="tab-item" href="me.html">
+          <span class="icon icon-me"></span>
+          <span class="tab-label">Me</span>
+      </a>
+  </nav>
+  <div class="content">
+    <div id="allmap" style="width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";"></div>
+  </div>
+</div>
 
 <div class="page" id="POIdetail">
   <header class="bar bar-nav">
@@ -159,29 +189,19 @@
       <div class="card-header">详情</div>
       <div class="card-content">
         <div class="card-content-inner">
-          <p>
-            营业时间：
-          </p>
-          <p>
-            高峰期：
-          </p>
-          <p>
-            费用：
-          </p>
+          <p>营业时间:</p>
+          <p>高峰期</p>
+          <p>费用:</p>
         </div>
       </div>
-      <div class="card-footer">星级：★★★★★</div>
+      <div class="card-footer">星级:★★★★★</div>
     </div>
     <div class="card">
       <div class="card-header">实时</div>
       <div class="card-content">
         <div class="card-content-inner">
-          <p>
-            快桩：
-          </p>
-          <p>
-            慢桩
-          </p>
+          <p>快桩:</p>
+          <p>慢桩:</p>
         </div>
       </div>
     </div>
@@ -224,16 +244,73 @@
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript">
 app.initialize();
-$.init();
 
-var mySwiper = new Swiper('.swiper-container', {
-   speed: 100,
-   autoplay: 5000,
-   pagination : '.swiper-pagination'
+// Index 
+$(document).on("pageInit", "#index", function(e, pageId, $page) {
+
+  $.init();
+  var mySwiper = new Swiper('.swiper-container', {
+     speed: 100,
+     autoplay: 5000,
+     pagination : '.swiper-pagination'
+  });
+
 });
 
-function scanQR(){
+// Map
+$(document).on("pageInit", "#map", function(e, pageId, $page) {
+  $.init();
+  // 百度地图API功能
+  var map = new BMap.Map("allmap");
+  var point = new BMap.Point(116.331398,39.897445);
+  map.centerAndZoom(point,16);
+  var myPosition;
+  /*初始化定位*/
+  var geolocation = new BMap.Geolocation();
+  geolocation.getCurrentPosition(function(r){
+    if(this.getStatus() == BMAP_STATUS_SUCCESS){
+      var mk = new BMap.Marker(r.point);
+      myPosition = r;
+      map.panTo(r.point);
+      map.addOverlay(mk);
+      mk.setAnimation( BMAP_ANIMATION_BOUNCE );
+      // alert('您的位置:'+r.point.lng+','+r.point.lat);
+    }
+    else {
+      alert('failed'+this.getStatus());
+    }        
+  },{enableHighAccuracy: true})
+  /*清理标注并重新初始化定位*/
+  function relocate(){
+    map.clearOverlays();
+    geolocation.getCurrentPosition(function(r){
+      if(this.getStatus() == BMAP_STATUS_SUCCESS){
+        var mk = new BMap.Marker(r.point);
+        map.panTo(r.point);
+        map.addOverlay(mk);
+        mk.setAnimation( BMAP_ANIMATION_BOUNCE ); 
+        myPosition = r;     
+        // alert('您的位置:'+r.point.lng+','+r.point.lat);
+      }
+      else {
+        alert('failed'+this.getStatus());
+      }        
+    },{enableHighAccuracy: true})
+  }
+  function searchPower(){
+    var local = new BMap.LocalSearch(map, {
+      renderOptions:{map: map}
+    });
+    var radius = 10000000;
+    var center = myPosition.point;
+    local.searchNearby("test", center, radius,{customData:{geotableId:140069}});
+  }
 
+});
+
+
+// Global
+function scanQR(){
     cordova.plugins.barcodeScanner.scan(
       function (result) {
           $.confirm("您选择的是XX充电站XX充电桩，充电费为X元/度");
