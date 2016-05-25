@@ -36,19 +36,19 @@
   <nav class="bar bar-tab">
       <a class="tab-item active" href="#index">
           <span class="icon icon-home"></span>
-          <span class="tab-label">Index</span>
+          <span class="tab-label">首页</span>
       </a>
       <a class="tab-item" href="#order">
           <span class="icon icon-gift"></span>
-          <span class="tab-label">Order</span>
+          <span class="tab-label">订单</span>
       </a>
       <a class="tab-item" href="#message">
           <span class="icon icon-message"></span>
-          <span class="tab-label">Message</span>
+          <span class="tab-label">交流</span>
       </a>
       <a class="tab-item" href="#me">
           <span class="icon icon-me"></span>
-          <span class="tab-label">Me</span>
+          <span class="tab-label">自己</span>
       </a>
   </nav>
   <div class="content ">
@@ -133,11 +133,11 @@
 <div class="page" id="map">
   <header class="bar bar-nav">
     <a  class="icon icon-left pull-left " href="javascript:$.router.back();"></a>
-    <h1 class="title">我的订单</h1>
-    <a  class="icon icon-menu pull-right open-panel"></a>
+    <h1 class="title">我要充电</h1>
+    <a  class="icon icon-refresh pull-right" href="javascript:relocate();"></a>
   </header>
   <nav class="bar bar-tab">
-      <a class="tab-item active" href="index.html#index">
+      <a class="tab-item active" href="#index">
           <span class="icon icon-home"></span>
           <span class="tab-label">Index</span>
       </a>
@@ -156,6 +156,86 @@
   </nav>
   <div class="content">
     <div id="allmap" style="width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";"></div>
+    <div id='r-result'></div>
+  </div>
+</div>
+
+<div class="page" id="reg">
+  <header class="bar bar-nav">
+    <a  class="icon icon-code pull-left " href="javascript:scanQR();"></a>
+    <h1 class="title"> 
+      <a class="create-actions" id="city" href="javascript:city();">
+      上海
+      </a>
+    </h1>
+    <a  class="icon icon-menu pull-right open-panel"></a>
+  </header>
+    
+  <nav class="bar bar-tab">
+      <a class="tab-item active" href="#index">
+          <span class="icon icon-home"></span>
+          <span class="tab-label">Index</span>
+      </a>
+      <a class="tab-item" href="#order">
+          <span class="icon icon-gift"></span>
+          <span class="tab-label">Order</span>
+      </a>
+      <a class="tab-item" href="#message">
+          <span class="icon icon-message"></span>
+          <span class="tab-label">Message</span>
+      </a>
+      <a class="tab-item" href="#me">
+          <span class="icon icon-me"></span>
+          <span class="tab-label">Me</span>
+      </a>
+  </nav>
+  <div class="content ">
+  <div class="content-padded">
+    <div class="list-block">
+      <ul>
+        <!-- Text inputs -->
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-password"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">手机</div>
+              <div class="item-input">
+                <input type="tel" id="reg_phone" placeholder="Phone Number —— will be your LOGIN NUMBER" class="">
+              </div>
+            </div>
+          </div>
+        </li>        
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-password"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">密码</div>
+              <div class="item-input">
+                <input type="password" id="reg_password" placeholder="Password" class="">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-name"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">姓名</div>
+              <div class="item-input">
+                <input type="text" id="reg_username" placeholder="Your TRUE name">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="content-block">
+      <div class="row">
+        <div class="col-50"><a href="javascript:reg_user();" class="button button-big button-fill button-success">注册</a></div>
+        <div class="col-50"><a href="#" class="button button-big button-fill button-danger">取消</a></div>
+      </div>
+    </div>
+  </div>
   </div>
 </div>
 
@@ -230,85 +310,31 @@
 
 
 
-<div class="panel-overlay"></div>
+<div class="panel-overlay" ></div>
 <div class="panel panel-right panel-cover" id='panel-js-demo'>
   <div class="content-block">
-    <p>我是从右边出现的</p>
-    <p>并且我是覆盖在页面上而不是推开页面</p>
-    <p></p>
+    <p>Powered by Command</p>
+    <p>It's JUST a Demo</p>
+    <p>This Panel is a Linker</p>
+    <p><a href="#reg" title="">reg</a></p>
+    <p><a href="#login" title="">login</a></p>
     <p><a href="#" class="close-panel">关闭</a></p>
+  </div>
+  <div class="list-block">
+    <ul>
+      <li><a href="#" class="item-link list-button">List Button 1</a></li>
+      <li><a href="#" class="item-link list-button">List Button 2</a></li>
+      <li><a href="#" class="item-link list-button">List Button 3</a></li>
+    </ul>
   </div>
 </div>
 
+<script type="text/javascript" src="bower_components/ngCordova/dist/ng-corodva.min.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript" src="js/user.js"></script>
 <script type="text/javascript">
-app.initialize();
-
-// Index 
-$(document).on("pageInit", "#index", function(e, pageId, $page) {
-
-  $.init();
-  var mySwiper = new Swiper('.swiper-container', {
-     speed: 100,
-     autoplay: 5000,
-     pagination : '.swiper-pagination'
-  });
-
-});
-
-// Map
-$(document).on("pageInit", "#map", function(e, pageId, $page) {
-  $.init();
-  // 百度地图API功能
-  var map = new BMap.Map("allmap");
-  var point = new BMap.Point(116.331398,39.897445);
-  map.centerAndZoom(point,16);
-  var myPosition;
-  /*初始化定位*/
-  var geolocation = new BMap.Geolocation();
-  geolocation.getCurrentPosition(function(r){
-    if(this.getStatus() == BMAP_STATUS_SUCCESS){
-      var mk = new BMap.Marker(r.point);
-      myPosition = r;
-      map.panTo(r.point);
-      map.addOverlay(mk);
-      mk.setAnimation( BMAP_ANIMATION_BOUNCE );
-      // alert('您的位置:'+r.point.lng+','+r.point.lat);
-    }
-    else {
-      alert('failed'+this.getStatus());
-    }        
-  },{enableHighAccuracy: true})
-  /*清理标注并重新初始化定位*/
-  function relocate(){
-    map.clearOverlays();
-    geolocation.getCurrentPosition(function(r){
-      if(this.getStatus() == BMAP_STATUS_SUCCESS){
-        var mk = new BMap.Marker(r.point);
-        map.panTo(r.point);
-        map.addOverlay(mk);
-        mk.setAnimation( BMAP_ANIMATION_BOUNCE ); 
-        myPosition = r;     
-        // alert('您的位置:'+r.point.lng+','+r.point.lat);
-      }
-      else {
-        alert('failed'+this.getStatus());
-      }        
-    },{enableHighAccuracy: true})
-  }
-  function searchPower(){
-    var local = new BMap.LocalSearch(map, {
-      renderOptions:{map: map}
-    });
-    var radius = 10000000;
-    var center = myPosition.point;
-    local.searchNearby("test", center, radius,{customData:{geotableId:140069}});
-  }
-
-});
-
-
 // Global
 function scanQR(){
     cordova.plugins.barcodeScanner.scan(

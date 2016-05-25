@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf8">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <link rel="stylesheet" href="css/index.css">
+
+  <link rel="stylesheet" href="css/sm.min.css">
+  <script type='text/javascript' src='js/zepto.min.js' charset='utf-8'></script>
+  <script type='text/javascript' src='js/sm.min.js' charset='utf-8'></script>
+  <link rel="stylesheet" href="css/sm-extend.min.css">
+  <script type='text/javascript' src='js/sm-extend.min.js' charset='utf-8'></script>
+  <script type="text/javascript" src="js/swiper.min.js"></script>
+  <script type="text/javascript" src="js/sm-city-picker.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=rsgXNasQAtvmUr7rPO02T6itkXSk1fhU"></script>
+
+
+  <title>Hello World</title>
+</head>
+<body>
+<div class="page" id="reg">
+  <header class="bar bar-nav">
+    <a  class="icon icon-code pull-left " href="javascript:scanQR();"></a>
+    <h1 class="title"> 
+      <a class="create-actions" id="city" href="javascript:city();">
+      上海
+      </a>
+    </h1>
+    <a  class="icon icon-menu pull-right open-panel"></a>
+  </header>
+    
+  <nav class="bar bar-tab">
+      <a class="tab-item active" href="#index">
+          <span class="icon icon-home"></span>
+          <span class="tab-label">Index</span>
+      </a>
+      <a class="tab-item" href="#order">
+          <span class="icon icon-gift"></span>
+          <span class="tab-label">Order</span>
+      </a>
+      <a class="tab-item" href="#message">
+          <span class="icon icon-message"></span>
+          <span class="tab-label">Message</span>
+      </a>
+      <a class="tab-item" href="#me">
+          <span class="icon icon-me"></span>
+          <span class="tab-label">Me</span>
+      </a>
+  </nav>
+  <div class="content ">
+  <div class="content-padded">
+
+    <div class="list-block">
+      <ul>
+        <!-- Text inputs -->
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-password"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">手机</div>
+              <div class="item-input">
+                <input type="tel" id="phone" placeholder="Phone Number —— will be your LOGIN NUMBER" class="">
+              </div>
+            </div>
+          </div>
+        </li>        
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-password"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">密码</div>
+              <div class="item-input">
+                <input type="password" id="password" placeholder="Password" class="">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-name"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">姓名</div>
+              <div class="item-input">
+                <input type="text" id="username" placeholder="Your TRUE name">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="content-block">
+      <div class="row">
+        <div class="col-50"><a href="javascript:reg_user();" class="button button-big button-fill button-success">注册</a></div>
+        <div class="col-50"><a href="#" class="button button-big button-fill button-danger">取消</a></div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</body>
+
+<script>
+function reg_user(){
+    username = $('#username').val();
+    password = $('#password').val();
+    phone = $('#phone').val();
+    data = {
+        'username' : username,
+        'password' : password,
+        'phone'    :phone
+    }
+    alert(data);
+    $.post(
+        'http://cmd.ecustcic.com/bg/pp/index.php/user/index',{
+            'username' : username,
+            'password' : password,
+            'phone'    :phone
+        },function(data){
+            alert(data);
+        }
+    );
+}
+</script>
+</html>
