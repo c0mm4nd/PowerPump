@@ -15,10 +15,22 @@
         },
         "phonegap-plugin-barcodescanner": {
             "PACKAGE_NAME": "com.CommandM.PP"
+        },
+        "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "com.CommandM.PP"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.CommandM.PP"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.CommandM.PP"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.CommandM.PP"
+        },
+        "cordova-plugin-app-event": {
             "PACKAGE_NAME": "com.CommandM.PP"
         }
     }
