@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/index.css">
 
     <link rel="stylesheet" href="css/sm.min.css">
+    <script src="bower_components/angular/angular.min.js"></script>
     <script type='text/javascript' src='js/zepto.min.js' charset='utf-8'></script>
     <script type='text/javascript' src='js/sm.min.js' charset='utf-8'></script>
     <link rel="stylesheet" href="css/sm-extend.min.css">
@@ -46,10 +47,6 @@
           <span class="icon icon-message"></span>
           <span class="tab-label">交流</span>
       </a>
-      <a class="tab-item" href="#me">
-          <span class="icon icon-me"></span>
-          <span class="tab-label">自己</span>
-      </a>
   </nav>
   <div class="content ">
   <div class="content-padded">
@@ -68,6 +65,95 @@
       <div class="col-25" align="middle" ><a href="#"><img src="img/index/icon_3.png" width="100%" /><span>我要代充</span></a></div>
       <div class="col-25" align="middle" ><a href="#"><img src="img/index/icon_4.png" width="100%" /><span>我要养车</span></a></div>
     </div>
+    <div class="content-block-title">社区精选</div>
+    <div class="card facebook-card">
+      <div class="card-header no-border">
+        <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
+        <div class="facebook-name">= =</div>
+        <div class="facebook-date">QAQ</div>
+      </div>
+      <div class="card-footer no-border">
+        <div class="card-content">强势吐槽专用区欢迎各种吐槽哈哈哈</div>
+        <a href="#" class="link">赞</a>
+        <a href="#" class="link">评论</a>
+        <a href="#" class="link">分享</a>
+      </div>
+    </div>  
+
+    <div class="card facebook-card">
+      <div class="card-header no-border">
+        <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
+        <div class="facebook-name">= =</div>
+        <div class="facebook-date">QAQ</div>
+      </div>
+      <div class="card-footer no-border">
+        <div class="card-content">强势吐槽专用区欢迎各种吐槽哈哈哈</div>
+        <a href="#" class="link">赞</a>
+        <a href="#" class="link">评论</a>
+        <a href="#" class="link">分享</a>
+      </div>
+    </div>  
+
+    <div class="card facebook-card">
+      <div class="card-header no-border">
+        <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
+        <div class="facebook-name">= =</div>
+        <div class="facebook-date">QAQ</div>
+      </div>
+      <div class="card-footer no-border">
+        <div class="card-content">强势吐槽专用区欢迎各种吐槽哈哈哈</div>
+        <a href="#" class="link">赞</a>
+        <a href="#" class="link">评论</a>
+        <a href="#" class="link">分享</a>
+      </div>
+    </div>        
+
+    <div class="card facebook-card">
+      <div class="card-header no-border">
+        <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
+        <div class="facebook-name">= =</div>
+        <div class="facebook-date">QAQ</div>
+      </div>
+      <div class="card-footer no-border">
+        <div class="card-content">强势吐槽专用区欢迎各种吐槽哈哈哈</div>
+        <a href="#" class="link">赞</a>
+        <a href="#" class="link">评论</a>
+        <a href="#" class="link">分享</a>
+      </div>
+     </div>  
+  </div>  
+  </div>
+</div>
+</div>
+
+<div class="page" id="message">
+  <header class="bar bar-nav">
+    <a  class="icon icon-code pull-left " href="javascript:scanQR();"></a>
+    <h1 class="title"> 
+      <a class="create-actions" id="city" href="javascript:city();">
+      上海
+      </a>
+    </h1>
+    <a  class="icon icon-edit pull-right "></a>
+  </header>
+    
+  <nav class="bar bar-tab">
+      <a class="tab-item active" href="#index">
+          <span class="icon icon-home"></span>
+          <span class="tab-label">首页</span>
+      </a>
+      <a class="tab-item" href="#order">
+          <span class="icon icon-gift"></span>
+          <span class="tab-label">订单</span>
+      </a>
+      <a class="tab-item" href="#message">
+          <span class="icon icon-message"></span>
+          <span class="tab-label">交流</span>
+      </a>
+
+  </nav>
+  <div class="content ">
+  <div class="content-padded">
     <div class="content-block-title">社区精选</div>
     <div class="card facebook-card">
       <div class="card-header no-border">
@@ -312,21 +398,45 @@
 
 <div class="panel-overlay" ></div>
 <div class="panel panel-right panel-cover" id='panel-js-demo'>
-  <div class="content-block">
-    <p>Powered by Command</p>
-    <p>It's JUST a Demo</p>
-    <p>This Panel is a Linker</p>
-    <p><a href="#reg" title="">reg</a></p>
-    <p><a href="#login" title="">login</a></p>
-    <p><a href="#" class="close-panel">关闭</a></p>
+  <div class="content-block ">
+    <p>你好，会员 Test</p>
   </div>
-  <div class="list-block">
+  <div class="list-block theme-dark">
     <ul>
-      <li><a href="#" class="item-link list-button">List Button 1</a></li>
-      <li><a href="#" class="item-link list-button">List Button 2</a></li>
-      <li><a href="#" class="item-link list-button">List Button 3</a></li>
+      <li class="item-content item-link">
+        <div class="item-media"><i class="icon icon-f7"></i></div>
+        <div class="item-inner">
+          <div class="item-title">真实姓名</div>
+          <div class="item-after">Test</div>
+        </div>
+      </li>
+      <li class="item-content item-link">
+        <div class="item-media"><i class="icon icon-f7"></i></div>
+        <div class="item-inner">
+          <div class="item-title">手机号</div>
+          <div class="item-after">13967557527</div>
+        </div>
+      </li>
+      <li class="item-content item-link">
+        <div class="item-media"><i class="icon icon-f7"></i></div>
+        <div class="item-inner">
+          <div class="item-title">车型</div>
+          <div class="item-after">比亚迪E6</div>
+        </div>
+      </li>
     </ul>
   </div>
+  <div class="list-block theme-dark">
+    <ul>
+      <li><a href="#" class="item-link list-button">我的爱车</a></li>
+      <li><a href="#" class="item-link list-button">能量币</a></li>
+      <li><a href="#" class="item-link list-button">收藏</a></li>
+      <li><a href="#" class="item-link list-button">会员福利</a></li>
+      <li><a href="#" class="item-link list-button">帮助</a></li>
+      <li><a href="#" class="item-link list-button">设置</a></li>
+    </ul>
+  </div>
+
 </div>
 
 <script type="text/javascript" src="bower_components/ngCordova/dist/ng-corodva.min.js"></script>
