@@ -134,11 +134,11 @@
       上海
       </a>
     </h1>
-    <a  class="icon icon-edit pull-right "></a>
+    <a  class="icon icon-edit pull-right" href="javascript:$.popup('.popup-edit');"></a>
   </header>
     
   <nav class="bar bar-tab">
-      <a class="tab-item active" href="#index">
+      <a class="tab-item " href="#index">
           <span class="icon icon-home"></span>
           <span class="tab-label">首页</span>
       </a>
@@ -146,7 +146,7 @@
           <span class="icon icon-gift"></span>
           <span class="tab-label">订单</span>
       </a>
-      <a class="tab-item" href="#message">
+      <a class="tab-item active" href="#message">
           <span class="icon icon-message"></span>
           <span class="tab-label">交流</span>
       </a>
@@ -215,7 +215,45 @@
 </div>
 </div>
 
+<!-- 填写Message的Popup -->
+<div class="popup popup-edit">
+  <div class="content">
+    <div class="list-block">
+      <ul>
+        <!-- Text inputs -->
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-email"></i></div>
+            <div class="item-inner">
+              <div class="item-input">
+                <input type="text" placeholder="标题">
+              </div>
+            </div>
+          </div>
+        </li>
+        <!-- Switch (Checkbox) -->
+        <li class="align-top">
+          <div class="item-content" style="height:20rem">
+            <div class="item-media"><i class="icon icon-form-comment"></i></div>
+            <div class="item-inner">
+              <div class="item-input">
+                <textarea placeholder= "内容"></textarea>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="content-block">
+      <div class="row">
+        <div class="col-50"><a href="javascript:$.closeModal('.popup-edit');" class="button button-big button-fill button-danger">取消</a></div>
+        <div class="col-50"><a href="javascript:edit();" class="button button-big button-fill button-success">提交</a></div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- 地图相关 ——我要充电 -->
 <div class="page" id="map">
   <header class="bar bar-nav">
     <a  class="icon icon-left pull-left " href="javascript:$.router.back();"></a>
@@ -241,11 +279,44 @@
       </a>
   </nav>
   <div class="content">
-    <div id="allmap" style="width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";"></div>
+    <div id="nearmap" style="width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";"></div>
     <div id='r-result'></div>
   </div>
 </div>
 
+<!-- 路线规划 -->
+<div class="page" id="plan">
+  <header class="bar bar-nav">
+    <a  class="icon icon-left pull-left " href="javascript:$.router.back();"></a>
+    <h1 class="title">我要充电</h1>
+    <a  class="icon icon-refresh pull-right" href="javascript:relocate();"></a>
+  </header>
+  <nav class="bar bar-tab">
+      <a class="tab-item active" href="#index">
+          <span class="icon icon-home"></span>
+          <span class="tab-label">Index</span>
+      </a>
+      <a class="tab-item" href="#">
+          <span class="icon icon-gift"></span>
+          <span class="tab-label">Order</span>
+      </a>
+      <a class="tab-item" href="#">
+          <span class="icon icon-message"></span>
+          <span class="tab-label">Message</span>
+      </a>
+      <a class="tab-item" href="me.html">
+          <span class="icon icon-me"></span>
+          <span class="tab-label">Me</span>
+      </a>
+  </nav>
+  <div class="content">
+
+    <div id="planmap" style="width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";"></div>
+    <div id='p-result'></div>
+  </div>
+</div>
+
+<!-- 注册 -->
 <div class="page" id="reg">
   <header class="bar bar-nav">
     <a  class="icon icon-code pull-left " href="javascript:scanQR();"></a>
@@ -439,7 +510,7 @@
 
 </div>
 
-<script type="text/javascript" src="bower_components/ngCordova/dist/ng-corodva.min.js"></script>
+<script type="text/javascript" src="bower_components/ngCordova/dist/ng-cordova.min.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/map.js"></script>
@@ -491,7 +562,9 @@ function city(){
   }
 </script>
 <script>
-  
+function edit(){
+  $.closeModal('.popup-edit')
+}
 </script>
 
 </body>
