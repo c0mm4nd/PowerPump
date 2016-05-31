@@ -41,6 +41,7 @@ var app = {
 };
 
 app.initialize();
+
 // Index 
 $(document).on("pageInit", "#index", function(e, pageId, $page) {
 
@@ -50,5 +51,6 @@ $(document).on("pageInit", "#index", function(e, pageId, $page) {
      autoplay: 5000,
      pagination : '.swiper-pagination'
   });
-
 });
+
+var user = '游客';

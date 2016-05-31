@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="ppApp">
   <head>
     <meta charset="utf8">
     <meta name="format-detection" content="telephone=no">
@@ -125,8 +125,10 @@
 </div>
 </div>
 
+</div>
+
 <!-- Message -->
-<div class="page" id="message" ng-app="messageApp"  ng-controller="messageCtrl">
+<div class="page" id="message" ng-controller="messageCtrl">
   <header class="bar bar-nav">
     <a  class="icon icon-code pull-left " href="javascript:scanQR();"></a>
     <h1 class="title"> 
@@ -151,34 +153,32 @@
       </a>
   </nav>
   <div class="content">
-  <div class="content-padded">
-    <div class="content-block-title">社区精选</div>
-    <div class="card" ng-repeat="x in msgData">
-        <div class="card-content">
-          <div class="list-block media-list">
-            <ul>
-              <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-title-row">
-                    <div class="item-title">{{x.title}}</div>
+    <div class="content-padded">
+      <div class="content-block-title">社区精选</div>
+      <div class="card" ng-repeat="x in msgData">
+          <div class="card-content">
+            <div class="list-block media-list">
+              <ul>
+                <li class="item-content">
+                <a href="#messageView{{x.id}}">
+                  <div class="item-inner">
+                    <div class="item-title-row">
+                      <div class="item-title" >{{x.username}}</div>
+                    </div>
+                    <div class="item-subtitle">{{x.title}}</div>
                   </div>
-                  <div class="item-subtitle">{{x.subtitle}}</div>
-                </div>
-              </li>
-            </ul>
+                </a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="card-footer">
-          <span>{{x.time}}</span>
-        </div>
-      </div>            
+          <div class="card-footer">
+            <span>{{x.time}}</span>
+          </div>
+      </div>
     </div>
-
   </div>  
-  </div>
 </div>
-</div>
-
 <!-- 填写Message的Popup -->
 <div class="popup popup-edit">
   <div class="content">
@@ -217,6 +217,41 @@
   </div>
 </div>
 
+
+<!-- 查看Message的Popup -->
+<div ng-controller="messageCtrl2 " >
+  <div ng-repeat="x in msgData2">
+    <div class="page" id="messageView{{x.id}}">
+      <header class="bar bar-nav">
+        <a  class="icon icon-left pull-left " href="javascript:$.router.back();"></a>
+        <h1 class="title">我要充电</h1>
+      </header>
+      <nav class="bar bar-tab">
+          <a class="tab-item active" href="#index">
+              <span class="icon icon-home"></span>
+              <span class="tab-label">Index</span>
+          </a>
+          <a class="tab-item" href="#">
+              <span class="icon icon-gift"></span>
+              <span class="tab-label">Order</span>
+          </a>
+          <a class="tab-item" href="#">
+              <span class="icon icon-message"></span>
+              <span class="tab-label">Message</span>
+          </a>
+          <a class="tab-item" href="me.html">
+              <span class="icon icon-me"></span>
+              <span class="tab-label">Me</span>
+          </a>
+      </nav>
+      <div class="content">
+        {{x.title}}
+        {{x.content}}
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- 地图相关 ——我要充电 -->
 <div class="page" id="map">
   <header class="bar bar-nav">
@@ -227,19 +262,15 @@
   <nav class="bar bar-tab">
       <a class="tab-item active" href="#index">
           <span class="icon icon-home"></span>
-          <span class="tab-label">Index</span>
+          <span class="tab-label">首页</span>
       </a>
-      <a class="tab-item" href="#">
+      <a class="tab-item" href="#order">
           <span class="icon icon-gift"></span>
-          <span class="tab-label">Order</span>
+          <span class="tab-label">订单</span>
       </a>
-      <a class="tab-item" href="#">
+      <a class="tab-item" href="#message">
           <span class="icon icon-message"></span>
-          <span class="tab-label">Message</span>
-      </a>
-      <a class="tab-item" href="me.html">
-          <span class="icon icon-me"></span>
-          <span class="tab-label">Me</span>
+          <span class="tab-label">交流</span>
       </a>
   </nav>
   <div class="content">
@@ -258,19 +289,15 @@
   <nav class="bar bar-tab">
       <a class="tab-item active" href="#index">
           <span class="icon icon-home"></span>
-          <span class="tab-label">Index</span>
+          <span class="tab-label">首页</span>
       </a>
-      <a class="tab-item" href="#">
+      <a class="tab-item" href="#order">
           <span class="icon icon-gift"></span>
-          <span class="tab-label">Order</span>
+          <span class="tab-label">订单</span>
       </a>
-      <a class="tab-item" href="#">
+      <a class="tab-item" href="#message">
           <span class="icon icon-message"></span>
-          <span class="tab-label">Message</span>
-      </a>
-      <a class="tab-item" href="me.html">
-          <span class="icon icon-me"></span>
-          <span class="tab-label">Me</span>
+          <span class="tab-label">交流</span>
       </a>
   </nav>
   <div class="content">
