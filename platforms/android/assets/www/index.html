@@ -23,6 +23,8 @@
 <body>
     
 <div class="page-group">
+
+<!-- 首页 -->
 <div class="page page-current" id="index">
   <header class="bar bar-nav">
     <a  class="icon icon-code pull-left " href="javascript:scanQR();"></a>
@@ -33,7 +35,6 @@
     </h1>
     <a  class="icon icon-menu pull-right open-panel"></a>
   </header>
-    
   <nav class="bar bar-tab">
       <a class="tab-item active" href="#index">
           <span class="icon icon-home"></span>
@@ -79,7 +80,6 @@
         <a href="#" class="link">分享</a>
       </div>
     </div>  
-
     <div class="card facebook-card">
       <div class="card-header no-border">
         <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
@@ -93,7 +93,6 @@
         <a href="#" class="link">分享</a>
       </div>
     </div>  
-
     <div class="card facebook-card">
       <div class="card-header no-border">
         <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
@@ -126,6 +125,7 @@
 </div>
 </div>
 
+<!-- Message -->
 <div class="page" id="message">
   <header class="bar bar-nav">
     <a  class="icon icon-code pull-left " href="javascript:scanQR();"></a>
@@ -136,7 +136,6 @@
     </h1>
     <a  class="icon icon-edit pull-right" href="javascript:$.popup('.popup-edit');"></a>
   </header>
-    
   <nav class="bar bar-tab">
       <a class="tab-item " href="#index">
           <span class="icon icon-home"></span>
@@ -150,9 +149,8 @@
           <span class="icon icon-message"></span>
           <span class="tab-label">交流</span>
       </a>
-
   </nav>
-  <div class="content ">
+  <div class="content">
   <div class="content-padded">
     <div class="content-block-title">社区精选</div>
     <div class="card facebook-card">
@@ -168,7 +166,6 @@
         <a href="#" class="link">分享</a>
       </div>
     </div>  
-
     <div class="card facebook-card">
       <div class="card-header no-border">
         <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
@@ -182,7 +179,6 @@
         <a href="#" class="link">分享</a>
       </div>
     </div>  
-
     <div class="card facebook-card">
       <div class="card-header no-border">
         <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
@@ -196,7 +192,6 @@
         <a href="#" class="link">分享</a>
       </div>
     </div>        
-
     <div class="card facebook-card">
       <div class="card-header no-border">
         <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
@@ -396,6 +391,76 @@
   </div>
 </div>
 
+<!-- 登陆 -->
+<div class="page" id="login">
+  <header class="bar bar-nav">
+    <a  class="icon icon-code pull-left " href="javascript:scanQR();"></a>
+    <h1 class="title"> 
+      <a class="create-actions" id="city" href="javascript:city();">
+      上海
+      </a>
+    </h1>
+    <a  class="icon icon-menu pull-right open-panel"></a>
+  </header>
+    
+  <nav class="bar bar-tab">
+      <a class="tab-item active" href="#index">
+          <span class="icon icon-home"></span>
+          <span class="tab-label">Index</span>
+      </a>
+      <a class="tab-item" href="#order">
+          <span class="icon icon-gift"></span>
+          <span class="tab-label">Order</span>
+      </a>
+      <a class="tab-item" href="#message">
+          <span class="icon icon-message"></span>
+          <span class="tab-label">Message</span>
+      </a>
+      <a class="tab-item" href="#me">
+          <span class="icon icon-me"></span>
+          <span class="tab-label">Me</span>
+      </a>
+  </nav>
+  <div class="content ">
+  <div class="content-padded">
+    <div class="list-block">
+      <ul>
+        <!-- Text inputs -->
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-password"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">手机</div>
+              <div class="item-input">
+                <input type="tel" id="login_phone" placeholder="Phone Number" class="">
+              </div>
+            </div>
+          </div>
+        </li>        
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="icon icon-form-password"></i></div>
+            <div class="item-inner">
+              <div class="item-title label">密码</div>
+              <div class="item-input">
+                <input type="password" id="login_password" placeholder="Password" class="">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="content-block">
+      <div class="row">
+        <div class="col-50"><a href="javascript:login_user();" class="button button-big button-fill button-success">登陆</a></div>
+        <div class="col-50"><a href="#" class="button button-big button-fill button-danger">取消</a></div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- 点信息 -->
 <div class="page" id="POIdetail">
   <header class="bar bar-nav">
     <a  class="icon icon-code pull-left " href="javascript:scanQR();"></a>
@@ -465,8 +530,7 @@
   </div>
 </div>
 
-
-
+<!-- 会员信息panel -->
 <div class="panel-overlay" ></div>
 <div class="panel panel-right panel-cover" id='panel-js-demo'>
   <div class="content-block ">

@@ -22,16 +22,25 @@
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
     </feature>
     <allow-intent href="market:*" />
-    <name>PowerPump</name>
+    <splash density="land-hdpi" src="res/slpash.png" />
+    <splash density="land-ldpi" src="res/slpash.png" />
+    <splash density="land-mdpi" src="res/slpash.png" />
+    <splash density="land-xhdpi" src="res/slpash.png" />
+    <splash density="port-hdpi" src="res/slpash.png" />
+    <splash density="port-ldpi" src="res/slpash.png" />
+    <splash density="port-mdpi" src="res/slpash.png" />
+    <splash density="port-xhdpi" src="res/slpash.png" />
+    <name>PowerBang</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        PowerBang
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="maoxs2@163.com" href="http://cmd.ecustcic.com">
+        Command M
     </author>
     <content src="index.html" />
     <allow-navigation href="*" />
     <allow-intent href="*" />
     <access origin="*" />
     <icon src="res/logo.png" />
+    <preference name="SplashScreenDelay" value="10000" />
 </widget>
