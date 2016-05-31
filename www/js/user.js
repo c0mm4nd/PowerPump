@@ -1,8 +1,12 @@
-$(document).on("pageInit", "#user", function(e, pageId, $page) {
+$(document).on("pageInit", "#reg", function(e, pageId, $page) {
 
 
 });
 
+$(document).on("pageInit", "#login", function(e, pageId, $page) {
+
+
+});
 
 	function reg_user(){
 		username = $('#reg_username').val();
@@ -11,32 +15,39 @@ $(document).on("pageInit", "#user", function(e, pageId, $page) {
 	    data = {
 	        'username' : username,
 	        'password' : password,
-	        'phone'    :phone
+	        'phone'    : phone
 	    }
-	    alert(data);
-	    $.post(
-	        'http://cmd.ecustcic.com/bg/pp/index.php/user/reg',{
-	            'username' : username,
-	            'password' : password,
-	            'phone'    :phone
-	        },function(data){
-	            alert(data);
-	        }
-	    );
+	    // alert(data);
+	    $.ajax({
+	      url: 'http://cmd.ecustcic.com/bg/index.php/user/reg',
+	      type: 'get',
+	      dataType: 'jsonp',
+	      jsonp:'callback',
+	      data: data,
+	      success:function(data){
+	        alert(data.status);
+	        $.router.back();
+	      },
+	    });
 	}
 
 
 	function login_user(){
 		phone    = $('#login_phone').val();
 		password = $('#login_password').val();
-		$.post(
-	        'http://cmd.ecustcic.com/bg/pp/index.php/user/login',{
-	            'username' : username,
-	            'password' : password,
-	            'phone'    :phone
-	        },function(data){
-	            alert(data);
-	        }
-	    );
-
+		data = {
+			'password' : password,
+			'phone'    : phone
+		}
+		$.ajax({
+		  url: 'http://cmd.ecustcic.com/bg/index.php/user/login',
+		  type: 'get',
+		  dataType: 'jsonp',
+		  jsonp:'callback',
+		  data: data,
+		  success:function(data){
+		    alert(data.status);
+		    $.router.back();
+		  },
+		});
 	}

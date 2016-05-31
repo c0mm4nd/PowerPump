@@ -110,17 +110,21 @@ function reg_user(){
         'username' : username,
         'password' : password,
         'phone'    :phone
-    }
-    alert(data);
-    $.post(
-        'http://cmd.ecustcic.com/bg/index.php/user/reg',{
-            'username' : username,
-            'password' : password,
-            'phone'    :phone
-        },function(data){
-            alert(data);
-        }
-    );
+    };
+    console.log(data);
+    $.ajax({
+      url: 'http://cmd.ecustcic.com/bg/index.php/user/reg',
+      type: 'get',
+      dataType: 'jsonp',
+      jsonp:'callback',
+      data: data,
+      success:function(data){
+        console.log(data);
+      },
+    });
 }
+
+
+
 </script>
 </html>
