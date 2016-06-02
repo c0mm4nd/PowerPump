@@ -62,7 +62,7 @@
     </div>
     <div class="row">
       <div class="col-25" align="middle" ><a href="#map"><img src="img/index/icon_1.png" width="100%" /><span>我要充电</span></a></div>
-      <div class="col-25" align="middle" ><a href="#"><img src="img/index/icon_2.png" width="100%" /><span>线路规划</span></a></div>
+      <div class="col-25" align="middle" ><a href="#plan"><img src="img/index/icon_2.png" width="100%" /><span>线路规划</span></a></div>
       <div class="col-25" align="middle" ><a href="#"><img src="img/index/icon_3.png" width="100%" /><span>我要代充</span></a></div>
       <div class="col-25" align="middle" ><a href="#"><img src="img/index/icon_4.png" width="100%" /><span>我要养车</span></a></div>
     </div>
@@ -286,6 +286,16 @@
     <h1 class="title">我要充电</h1>
     <a  class="icon icon-refresh pull-right" href="javascript:relocate();"></a>
   </header>
+  <div class="bar bar-header-secondary">
+    <div class="searchbar">
+      <a class="searchbar-cancel">取消</a>
+      <div class="search-input">
+        <label class="icon icon-search" for="search"></label>
+        <input type="search" id='searchPlan' placeholder='输入关键字...'/>
+      </div>
+      <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:100%;height:auto; display:none;"></div>
+    </div>
+  </div>
   <nav class="bar bar-tab">
       <a class="tab-item active" href="#index">
           <span class="icon icon-home"></span>
@@ -574,9 +584,9 @@
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/map.js"></script>
-<script type="text/javascript" src="js/plan.js"></script>
 <script type="text/javascript" src="js/msg.js"></script>
 <script type="text/javascript" src="js/user.js"></script>
+<script type="text/javascript" src="js/plan.js"></script>
 <script type="text/javascript">
 // Global
 function scanQR(){
