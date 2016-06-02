@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="PowerPump">
+<html>
   <head>
     <meta charset="utf8">
     <meta name="format-detection" content="telephone=no">
@@ -126,7 +126,7 @@
 </div>
 
 <!-- Message -->
-<div class="page" id="message">
+<div class="page" id="message" ng-app="messageApp"  ng-controller="messageCtrl">
   <header class="bar bar-nav">
     <a  class="icon icon-code pull-left " href="javascript:scanQR();"></a>
     <h1 class="title"> 
@@ -153,58 +153,27 @@
   <div class="content">
   <div class="content-padded">
     <div class="content-block-title">社区精选</div>
-    <div class="card facebook-card">
-      <div class="card-header no-border">
-        <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
-        <div class="facebook-name">= =</div>
-        <div class="facebook-date">QAQ</div>
-      </div>
-      <div class="card-footer no-border">
-        <div class="card-content">强势吐槽专用区欢迎各种吐槽哈哈哈</div>
-        <a href="#" class="link">赞</a>
-        <a href="#" class="link">评论</a>
-        <a href="#" class="link">分享</a>
-      </div>
-    </div>  
-    <div class="card facebook-card">
-      <div class="card-header no-border">
-        <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
-        <div class="facebook-name">= =</div>
-        <div class="facebook-date">QAQ</div>
-      </div>
-      <div class="card-footer no-border">
-        <div class="card-content">强势吐槽专用区欢迎各种吐槽哈哈哈</div>
-        <a href="#" class="link">赞</a>
-        <a href="#" class="link">评论</a>
-        <a href="#" class="link">分享</a>
-      </div>
-    </div>  
-    <div class="card facebook-card">
-      <div class="card-header no-border">
-        <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
-        <div class="facebook-name">= =</div>
-        <div class="facebook-date">QAQ</div>
-      </div>
-      <div class="card-footer no-border">
-        <div class="card-content">强势吐槽专用区欢迎各种吐槽哈哈哈</div>
-        <a href="#" class="link">赞</a>
-        <a href="#" class="link">评论</a>
-        <a href="#" class="link">分享</a>
-      </div>
-    </div>        
-    <div class="card facebook-card">
-      <div class="card-header no-border">
-        <div class="facebook-avatar"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="34" height="34"></div>
-        <div class="facebook-name">= =</div>
-        <div class="facebook-date">QAQ</div>
-      </div>
-      <div class="card-footer no-border">
-        <div class="card-content">强势吐槽专用区欢迎各种吐槽哈哈哈</div>
-        <a href="#" class="link">赞</a>
-        <a href="#" class="link">评论</a>
-        <a href="#" class="link">分享</a>
-      </div>
-     </div>  
+    <div class="card" ng-repeat="x in msgData">
+        <div class="card-content">
+          <div class="list-block media-list">
+            <ul>
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">{{x.title}}</div>
+                  </div>
+                  <div class="item-subtitle">{{x.subtitle}}</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span>{{x.time}}</span>
+        </div>
+      </div>            
+    </div>
+
   </div>  
   </div>
 </div>
@@ -221,7 +190,7 @@
             <div class="item-media"><i class="icon icon-form-email"></i></div>
             <div class="item-inner">
               <div class="item-input">
-                <input type="text" placeholder="标题">
+                <input type="text" placeholder="标题" id="msg_add_title">
               </div>
             </div>
           </div>
@@ -231,8 +200,8 @@
           <div class="item-content" style="height:20rem">
             <div class="item-media"><i class="icon icon-form-comment"></i></div>
             <div class="item-inner">
-              <div class="item-input">
-                <textarea placeholder= "内容"></textarea>
+              <div class="item-input" >
+                <textarea placeholder= "内容" id="msg_add_content" style="height:20rem"></textarea>
               </div>
             </div>
           </div>
@@ -242,7 +211,7 @@
     <div class="content-block">
       <div class="row">
         <div class="col-50"><a href="javascript:$.closeModal('.popup-edit');" class="button button-big button-fill button-danger">取消</a></div>
-        <div class="col-50"><a href="javascript:edit();" class="button button-big button-fill button-success">提交</a></div>
+        <div class="col-50"><a href="javascript:addMsg();" class="button button-big button-fill button-success">提交</a></div>
       </div>
     </div>
   </div>
@@ -578,6 +547,8 @@
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript" src="js/plan.js"></script>
+<script type="text/javascript" src="js/msg.js"></script>
 <script type="text/javascript" src="js/user.js"></script>
 <script type="text/javascript">
 // Global
@@ -624,11 +595,6 @@ function city(){
     var groups = [buttons1];
     $.actions(groups);      
   }
-</script>
-<script>
-function edit(){
-  $.closeModal('.popup-edit')
-}
 </script>
 
 </body>
