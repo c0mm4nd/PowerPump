@@ -9,7 +9,7 @@ geolocation.getCurrentPosition(function(r){
     alert('failed'+this.getStatus());
   }
 },{enableHighAccuracy: true});
-var radius = 10000000000000000000000;
+var radius = 100000;
 
 $(document).on("pageInit", "#map", function(e, pageId, page) {
   var nearmap = new BMap.Map("nearmap");
@@ -24,7 +24,7 @@ $(document).on("pageInit", "#map", function(e, pageId, page) {
   // 百度地图API功能
   nearmap.centerAndZoom(myPoint,16);
 
-  local.searchNearby("充",myPoint,radius,{customData:{geotableId:140069}});
+  local.searchNearby("电",myPoint,radius,{customData:{geotableId:140069}});
   
   nearmap.addEventListener("click",function(e){
     $('#nearmap').height('50%');
