@@ -14,13 +14,7 @@ planmap.enableScrollWheelZoom();
 planmap.clearOverlays();    
 var radius = 2000;
 var center = point; 
-
-var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
-    {"input" : "searchPlan"
-    ,"location" : planmap
-  });
-
-
+  
 
 $(document).on("pageInit", "#plan", function(e, pageId, $page) {
   var myPoint = myPosition.point;
@@ -34,12 +28,14 @@ $(document).on("pageInit", "#plan", function(e, pageId, $page) {
 
 
 var goal;
+
 $('#searchPlan').bind('keypress',function(event){
- 
+  console.log('success');
   if(event.keyCode == "13"){
     
     input = $('#searchPlan').val();
     console.log(input);
+    var res;
     var myGeo = new BMap.Geocoder();
     myGeo.getPoint(input, function(gpoint){
         if (gpoint) {
@@ -47,40 +43,45 @@ $('#searchPlan').bind('keypress',function(event){
           console.log(goalPoint);
           planmap.centerAndZoom(gpoint, 16);
           planmap.addOverlay(new BMap.Marker(gpoint));
+        
+
+          var data = {
+            'myPosition' :  myPosition.point.lng + ',' + myPosition.point.lat ,
+            'goal'       :  goalPoint
+          };
+          console.log(window.goalPoint);
+          console.log(goal);
+
+          $.ajax({
+            url: 'http://cmd.ecustcic.com/bg/index.php/map/plan',
+            type: 'get',
+            dataType: 'jsonp',
+            jsonp:'callback',
+            data: data,
+            success:function(data){
+              // alert(data.status);
+              var myPoint = myPosition.point;
+              res = data;
+              console.log('res=' + res);
+              distance = res.distance;
+              waypoint = res.waypoint;
+              console.log(distance);
+              console.log(waypoint);
+              // 百度地图API功能
+              var driving = new BMap.DrivingRoute(planmap, {renderOptions:{map: planmap,  panel: "p-result", autoViewport: true}});
+              var way_point = new BMap.Point(waypoint[0],waypoint[1]);
+              console.log( 'myPoint ' + myPoint + 'goalPoint' + gpoint + 'way_point' + way_point );
+
+              driving.search(myPoint, gpoint,{waypoints:[way_point]});
+            },
+          });
         }else{
           alert("您选择地址没有解析到结果!");
         }
         goal = goalPoint;
       });
 
-    var res;
-    var data = {
-      'myPosition' : myPosition.point.lng + ',' + myPosition.point.lat ,
-      'goal'    : goalPoint
-    };
-    console.log(window.goalPoint);
-    console.log(goal);
 
-    $.ajax({
-      url: 'http://cmd.ecustcic.com/bg/index.php/map/plan',
-      type: 'get',
-      dataType: 'jsonp',
-      jsonp:'callback',
-      data: data,
-      success:function(data){
-        // alert(data.status);
-        res = data;
-        console.log('res=' + res);
-      },
-    });
-
-    distance = res.distance;
-    waypoint = res.waypoint;
-
-    // 百度地图API功能
-    var driving = new BMap.DrivingRoute(planmap, {renderOptions:{map: planmap,  panel: "r-result", autoViewport: true}});
-    planmap.clearOverlays;
-    driving.search(myPoint, goalPoint,{waypoints:[waypoint]});
   }
 });
 
