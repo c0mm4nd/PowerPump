@@ -1,4 +1,5 @@
 // Map
+
 var geolocation = new BMap.Geolocation();
 var myPosition,myPoint;
 geolocation.getCurrentPosition(function(r){
@@ -9,22 +10,24 @@ geolocation.getCurrentPosition(function(r){
     alert('failed'+this.getStatus());
   }
 },{enableHighAccuracy: true});
+
 var point = new BMap.Point(121.508592,30.839823); // 创建点坐标
 
 var nearmap = new BMap.Map("nearmap"); // 创建地图实例
-var options = {
+var map_options = {
   renderOptions: {
     map: nearmap
   }
 };
-var localSearch = new BMap.LocalSearch(nearmap, options);
+
 nearmap.centerAndZoom(point, 12); // 初始化地图，设置中心点坐标和地图级别
 nearmap.enableScrollWheelZoom();
 
 //  circlecomplete
-nearmap.clearOverlays();    
-var radius = 2000;
+nearmap.clearOverlays();
+var radius = 2000000;
 var center = point; 
+  var localSearch = new BMap.LocalSearch(nearmap, map_options);
 
 
 
@@ -42,23 +45,28 @@ $(document).on("pageInit", "#map", function(e, pageId, page) {
   // nearnearmap.centerAndZoom(myPoint,16);
 
   // local.searchNearby("电",myPoint,radius,{customData:{geotableId:140069}});
+  console.log(localSearch);
+  console.log('map init');
   var myPoint = myPosition.point;
-  localSearch.searchNearby('*', myPoint, radius, {
-    customData: {
-      geotableId: 140069
-    }
+  console.log(myPoint);
+  console.log(myPosition);
+  localSearch.searchNearby('*', center, radius, {
+  	customData: {
+  		geotableId: 140069
+  	}
   });
-  // nearnearmap.addEventListener("click",function(e){
-  //   $('#nearmap').height('50%');
-  //   var p1 = myPoint;
-  //   var p2 = e;
-  // 百度地图API功能
+  
+  nearmap.addEventListener("click",function(e){
+    $('#nearmap').height('50%');
+    var p1 = myPoint;
+    var p2 = e;
+ 	// 百度地图API功能
 
-      // var driving = new BMap.DrivingRoute(nearmap, {renderOptions:{map: nearmap,  panel: "r-result", autoViewport: true}});
-      // nearnearmap.clearOverlays;
-      // driving.search(p1, p2);
+    var driving = new BMap.DrivingRoute(nearmap, {renderOptions:{map: nearmap,  panel: "r-result", autoViewport: true}});
+    nearmap.clearOverlays;
+    driving.search(p1, p2);
 
-    // });
+    });
 });
 
   /*清理标注并重新初始化定位*/
