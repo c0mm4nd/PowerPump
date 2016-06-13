@@ -42,5 +42,5 @@
     <allow-intent href="*" />
     <access origin="*" />
     <icon src="res/logo.png" />
-    <preference name="SplashScreenDelay" value="10000" />
+    <preference name="SplashScreenDelay" value="6000" />
 </widget>

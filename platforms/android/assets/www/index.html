@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="ppApp">
+<html>
   <head>
     <meta charset="utf8">
     <meta name="format-detection" content="telephone=no">
@@ -20,7 +20,7 @@
 
     <title>Hello World</title>
   </head>
-<body>
+<body ng-app="ppApp">
     
 <div class="page-group">
 
@@ -224,28 +224,23 @@
     <div class="page" id="messageView{{x.id}}">
       <header class="bar bar-nav">
         <a  class="icon icon-left pull-left " href="javascript:$.router.back();"></a>
-        <h1 class="title">我要充电</h1>
+        <h1 class="title">{{x.title}}</h1>
       </header>
-      <nav class="bar bar-tab">
-          <a class="tab-item active" href="#index">
-              <span class="icon icon-home"></span>
-              <span class="tab-label">Index</span>
-          </a>
-          <a class="tab-item" href="#">
-              <span class="icon icon-gift"></span>
-              <span class="tab-label">Order</span>
-          </a>
-          <a class="tab-item" href="#">
-              <span class="icon icon-message"></span>
-              <span class="tab-label">Message</span>
-          </a>
-          <a class="tab-item" href="me.html">
-              <span class="icon icon-me"></span>
-              <span class="tab-label">Me</span>
-          </a>
-      </nav>
-      <div class="content">
-        {{x.title}}
+  <nav class="bar bar-tab">
+      <a class="tab-item active" href="#index">
+          <span class="icon icon-home"></span>
+          <span class="tab-label">首页</span>
+      </a>
+      <a class="tab-item" href="#order">
+          <span class="icon icon-gift"></span>
+          <span class="tab-label">订单</span>
+      </a>
+      <a class="tab-item" href="#message">
+          <span class="icon icon-message"></span>
+          <span class="tab-label">交流</span>
+      </a>
+  </nav>
+      <div class="content content-padding">
         {{x.content}}
       </div>
     </div>
@@ -328,23 +323,18 @@
     </h1>
     <a  class="icon icon-menu pull-right open-panel"></a>
   </header>
-    
   <nav class="bar bar-tab">
-      <a class="tab-item active" href="#index">
+      <a class="tab-item " href="#index">
           <span class="icon icon-home"></span>
-          <span class="tab-label">Index</span>
+          <span class="tab-label">首页</span>
       </a>
       <a class="tab-item" href="#order">
           <span class="icon icon-gift"></span>
-          <span class="tab-label">Order</span>
+          <span class="tab-label">订单</span>
       </a>
-      <a class="tab-item" href="#message">
+      <a class="tab-item active" href="#message">
           <span class="icon icon-message"></span>
-          <span class="tab-label">Message</span>
-      </a>
-      <a class="tab-item" href="#me">
-          <span class="icon icon-me"></span>
-          <span class="tab-label">Me</span>
+          <span class="tab-label">交流</span>
       </a>
   </nav>
   <div class="content ">
@@ -408,23 +398,18 @@
     </h1>
     <a  class="icon icon-menu pull-right open-panel"></a>
   </header>
-    
   <nav class="bar bar-tab">
-      <a class="tab-item active" href="#index">
+      <a class="tab-item " href="#index">
           <span class="icon icon-home"></span>
-          <span class="tab-label">Index</span>
+          <span class="tab-label">首页</span>
       </a>
       <a class="tab-item" href="#order">
           <span class="icon icon-gift"></span>
-          <span class="tab-label">Order</span>
+          <span class="tab-label">订单</span>
       </a>
-      <a class="tab-item" href="#message">
+      <a class="tab-item active" href="#message">
           <span class="icon icon-message"></span>
-          <span class="tab-label">Message</span>
-      </a>
-      <a class="tab-item" href="#me">
-          <span class="icon icon-me"></span>
-          <span class="tab-label">Me</span>
+          <span class="tab-label">交流</span>
       </a>
   </nav>
   <div class="content ">
@@ -474,21 +459,17 @@
     <a  class="icon icon-menu pull-right open-panel"></a>
   </header>
   <nav class="bar bar-tab">
-      <a class="tab-item active" href="index.html#index">
+      <a class="tab-item active" href="#index">
           <span class="icon icon-home"></span>
-          <span class="tab-label">Index</span>
+          <span class="tab-label">首页</span>
       </a>
-      <a class="tab-item" href="#">
+      <a class="tab-item" href="#order">
           <span class="icon icon-gift"></span>
-          <span class="tab-label">Order</span>
+          <span class="tab-label">订单</span>
       </a>
-      <a class="tab-item" href="#">
+      <a class="tab-item" href="#message">
           <span class="icon icon-message"></span>
-          <span class="tab-label">Message</span>
-      </a>
-      <a class="tab-item" href="me.html">
-          <span class="icon icon-me"></span>
-          <span class="tab-label">Me</span>
+          <span class="tab-label">交流</span>
       </a>
   </nav>
   <div class="content content-padding">
@@ -538,23 +519,24 @@
 
 <!-- 会员信息panel -->
 <div class="panel-overlay" ></div>
-<div class="panel panel-right panel-cover" id='panel-js-demo'>
-  <div class="content-block ">
+
+<div class="panel panel-right panel-cover" id='panel-js-demo' ng-controller="userPanelCtrl">
+  <div class="content-block" ng-if="isLogin" >
     <p>你好，会员 Test</p>
   </div>
-  <div class="list-block theme-dark">
+  <div class="list-block theme-dark afterLogin">
     <ul>
       <li class="item-content item-link">
         <div class="item-media"><i class="icon icon-f7"></i></div>
         <div class="item-inner">
-          <div class="item-title">真实姓名</div>
+          <div class="item-title">姓名</div>
           <div class="item-after">Test</div>
         </div>
       </li>
       <li class="item-content item-link">
         <div class="item-media"><i class="icon icon-f7"></i></div>
         <div class="item-inner">
-          <div class="item-title">手机号</div>
+          <div class="item-title">手机</div>
           <div class="item-after">13967557527</div>
         </div>
       </li>
@@ -567,7 +549,7 @@
       </li>
     </ul>
   </div>
-  <div class="list-block theme-dark">
+  <div class="list-block theme-dark afterLogin" >
     <ul>
       <li><a href="#" class="item-link list-button">我的爱车</a></li>
       <li><a href="#" class="item-link list-button">能量币</a></li>
@@ -575,6 +557,12 @@
       <li><a href="#" class="item-link list-button">会员福利</a></li>
       <li><a href="#" class="item-link list-button">帮助</a></li>
       <li><a href="#" class="item-link list-button">设置</a></li>
+    </ul>
+  </div>
+  <div class="list-block theme-dark beforeLogin" >
+    <ul>
+      <li><a href="#login" class="item-link list-button">注册</a></li>
+      <li><a href="#reg" class="item-link list-button">登录</a></li>
     </ul>
   </div>
 

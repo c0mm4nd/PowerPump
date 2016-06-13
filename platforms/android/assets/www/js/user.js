@@ -27,6 +27,7 @@ $(document).on("pageInit", "#login", function(e, pageId, $page) {
 	      success:function(data){
 	        alert(data.status);
 	        $.router.back();
+	        window.location.href("#login");
 	      },
 	    });
 	}
@@ -49,6 +50,8 @@ $(document).on("pageInit", "#login", function(e, pageId, $page) {
 		    alert(data.status);
 		    $.router.back();
 		    user = data.username;
+		    $(".afterLogin").show();
+		    $(".beforeLogin").hide();
 		  },
 		});
 	}

@@ -1,6 +1,5 @@
-var app = angular.module('ppApp', []);
-
-app.controller('messageCtrl', function($scope, $http) {
+var ngApp = angular.module('ppApp', ['ngCordova']);
+ngApp.controller('messageCtrl', function($scope, $http) {
     $http.jsonp("http://cmd.ecustcic.com/bg/index.php/msg/get?callback=JSON_CALLBACK")
         .success(
             function(data, status, header, config){
@@ -15,7 +14,7 @@ app.controller('messageCtrl', function($scope, $http) {
         );
 });
 
-app.controller('messageCtrl2', function($scope, $http) {
+ngApp.controller('messageCtrl2', function($scope, $http) {
     $http.jsonp("http://cmd.ecustcic.com/bg/index.php/msg/get?callback=JSON_CALLBACK")
         .success(
             function(data, status, header, config){
@@ -30,6 +29,13 @@ app.controller('messageCtrl2', function($scope, $http) {
         );
 });
 
+ngApp.controller('userPanelCtrl', function($scope, $http) {
+    if (user == '游客'){
+        $scope.isLogin = false ;
+    }else{
+        $scope.isLogin = true ;
+    }
+});
 
 function addMsg(){
 	title = $('#msg_add_title').val();

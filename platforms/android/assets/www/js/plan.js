@@ -1,12 +1,11 @@
 // planmap
 var planmap = new BMap.Map("planmap"); // 创建地图实例
-var options = {
+var plan_options = {
   renderOptions: {
     map: planmap
   }
 };
 var point = new BMap.Point(121.508592,30.839823);
-var localSearch = new BMap.LocalSearch(planmap, options);
 planmap.centerAndZoom(point, 12); // 初始化地图，设置中心点坐标和地图级别
 planmap.enableScrollWheelZoom();
 
@@ -68,6 +67,7 @@ $('#searchPlan').bind('keypress',function(event){
               console.log(distance);
               console.log(waypoint);
               // 百度地图API功能
+              
               var driving = new BMap.DrivingRoute(planmap, {renderOptions:{map: planmap,  panel: "p-result", autoViewport: true}});
               var way_point = new BMap.Point(waypoint[0],waypoint[1]);
               console.log( 'myPoint ' + myPoint + 'goalPoint' + gpoint + 'way_point' + way_point );

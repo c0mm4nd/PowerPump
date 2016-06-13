@@ -44,8 +44,6 @@ app.initialize();
 
 // Index 
 $(document).on("pageInit", "#index", function(e, pageId, $page) {
-
-  $.init();
   var mySwiper = new Swiper('.swiper-container', {
      speed: 100,
      autoplay: 5000,
@@ -54,3 +52,4 @@ $(document).on("pageInit", "#index", function(e, pageId, $page) {
 });
 
 var user = '游客';
+
